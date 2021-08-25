@@ -1,0 +1,56 @@
+Linux Shell:
+
+Shell is a Default User interface to Linux OS, It's mainly the interface that you can find in terminal. All the application depend on
+shell for the their operations with OS system. It's default interface in the linux OS. It's also know as CLI interface, and it's powerful than GUI.
+Server Dristributions do not have GUI, hence CLI is important!
+
+The super User shell prompt ends with # typically
+Root is powerful , Normal accounts can only do a subset of Root accounts
+It's typically restricted to the System Admins only.
+They are required to start and stop certain applications and services.
+
+
+Shell Commands: Commands are case sensitive in Linux.
+
+ls: list directory
+cd: Change directory
+pwd: displays present working directory
+cat: Concatenates and display files
+echo: displays arguments to the screen
+man: Displays the online manual
+exit: exit your current Shell
+clear: Clears the screen
+
+How to use these commands? Well Linux shell comes with the inbuilt documentation, we can use the man command like: 
+man -command_name, command_name --help or command_name -help
+
+Google can always help you for better help.
+
+ls -l: Long listing format that provides detailed infor for the command
+
+Evironment Variables:
+
+-Starts with: '$'
+-Storage that has a name and value
+-Typically Uppercase, eg: $PATH
+-Access the content name using: echo $VAR_NAME
+eg: echo $PATH
+
+Let look into the most widely used Variable '$PATH'
+- It controls the command search path 
+- Contains the list of Directories
+
+
+Let's start fishing!
+-Look at the directories in $PATH
+-Loot at each files in Directories
+-Use man to learn what command does
+
+
+Search Man Pages:
+
+man -k SEARCH_TERM
+
+for eg: man -k calendar
+
+
