@@ -1,0 +1,21 @@
+Linux Directory:
+
+Starts with Root
+
+
+                                                                               / Root Directory
+                                                                                     |
+                                                                                     |
+                                                                                     |
+  |---------|----------|----------|----------|-----------|-----------|----------|-----------|-----------|------------|------------|-----------|-----------|----------|--------------|
+/bin/       |        /boot/       |        /dev/         |         /etc/        |        /home/         |          /lib/          |        /media/        |        /mnt/          /cgroup/
+(System     |    (Os Startup)     |      (Devices        |  (System Config)     |    (User Files)       |                         |                       |       external      Controlled groups
+Binaries)   |                     | Adminster by System) |                      |                       |                         |                       |  devices mount point
+         /opt/                 /usr/                 /sbin/                  /srv/                   /tmp/                     /root/                 /var/
+        Optional                  |          System Admin Binaries       Data that                Space cleared                                          |
+  or 3rd party Apps               |                                   is served by the system      after reboot                                          |
+                                  |                                                                                                                      |
+            |------------|-------------------|-------------|                                                                            |---------|--------------|-------------|
+            |            |                   |             |                                                                            |         |              |             |  
+          /bin/     /include/             /lib/         /sbin/                                                                       /cache/    /log/         /spool/        /tmp/
+                            
