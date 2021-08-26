@@ -1,0 +1,328 @@
+Linux Directories and File permissions:
+
+Types of permissions are used in Linux file systems are as follows:
+
+-Symbolic permissions
+-Numeric/octal permissions
+-File vs Directory permissions
+-Changing permissions
+-Working with Groups
+-File creation Mask
+
+Symbols                   Types                               Directory
+
+-                        Regular File
+d                         Directory
+l                       Symbolic Link
+r                           Read                 Allows file name to be read in Directory
+w                           Write              Allows entries to be mofied in the directory
+x                          Execute          Allows access to the content and the meta data for entries
+u                           User
+g                          Group
+a                           All
+
+
+- Every user belons to any one Group
+- Users can belong to many Groups
+- The group command displays a user's Group
+eg: id -Gn
+
+
+Permission Decodation:
+
+Breaking down premission string: -rw-r--r--
+
+    -     rw-     r--     r--
+    |      |      |        | 
+  Type   User    Group  Other
+
+Order here has its meaning 
+
+  Changing Permissions:
+
+  Item                    Meaning
+  chmod                 Change mode command
+  ugoa                  User category, User group, other, All
+  +-=                   add, subtract, or set Permissions
+  rwx                   read write and Execute
+
+
+  How to use chmod?
+
+  chomd + -[ugoa] + [+-=] +[rwx]  [file name]
+
+  for eg:
+
+  chmod  u+rwx sale_data.txt
+
+  this will add the user read write and execute permissions
+  we can add multiple paraameters to this as follows:
+
+  chmod u+rwx, g-x write.txt
+
+  chmod a=r will set all to read and so on, you gotta play with chmod
+
+  chmod 0=  will not give any permissions to others
+
+  Numeric Based Permissions:
+
+  r         w          x
+  0         0          0          Value for off
+  1         1          1          Binary value for on
+  4         2          0          Base 10 value for on
+
+
+
+  octal           Binary              String            Description
+  0               000                 ---              No permissions
+  1               001                 --x               Execute only
+  2               010                 -w-               Write Only
+  3               011                 -wx            Write and execute (2+1)
+  4               100                 r--               Read Only
+  5               101                 r-x             Read and execute (4+1)
+  6               110                 rw-             Read and write`(4+2)
+  7               111                 rwx             Read write and execute (4+2+1)
+
+   
+  Following is the most commonly used permissions:
+
+
+  Symbolic          Octal
+  -rwx------        700
+  -rwxr-xr-x        27455
+  -rw-rw-r--        664
+  -rw-rw----        660
+  -rw-r--r--        644
+
+
+  Working with groups:
+
+  -New files belong to your primary group
+  -The chrgp group command changes the group
+   eg: chgrp [group_name]
+  -When using the term Umask, we are referring to one of the following two meanings:
+    -The user file creation mode mask that is used to configure the default permissions for newly created files and directories
+    -The command “umask” which is used to set the umask value
+
+   -Permissions on directory can affect files in the directory
+   -If the permissions look correct. start checking directory Permissions
+   -Work you way up to root
+
+
+   File Creation Mask:
+
+   - It determines default permissions for a file
+   - if no mask were used, the default file permissions would be:
+   => 777 for Directories
+   => 666 for files
+   It is used by multiple commands in Linux like mkdir, touch, tee, and other commands which creates files and directories. 
+   It gets involved in each and every step when a new file or directory gets created. 
+
+   - It is set by the system Admin for some sand vault
+
+   umask [-S] [mode]
+
+   - Sets file creation to mask mode if given
+   - Use -S for symbolic notation
+   
+   Viewing Permissions - Symbolic Mode:
+Let’s have a look at below file ownership. You can fetch the information on your Linux machine by typing ls -l command.
+
+Linux Umask explained
+
+The first character in the above image shows the file type. There could be different types of files in Linux as below.
+
+    -   
+
+Indicates the simple regular file with different extensions like .txt, .json, .sh, .py, .rb, and so on
+
+    d
+
+Indicates directory/folder
+
+    l
+
+Indicates a symbolic link or symlink or soft link
+
+    c
+
+Indicates character device file
+
+    b
+
+Indicates block device file
+
+The next nine symbols are divided into three parts as below. 
+
+               rwx
+
+The file owner can read the content, modify the contents and execute the file as a program
+
+   r-x
+
+Members in the group “users” can read the content and execute the file as a program but cannot modify the file contents
+
+   r-x
+
+The one who is not the owner also not the member of the group i.e. other, can also read the contents of the file and execute the file as a program but cannot modify the file contents
+
+Viewing Permissions - Numeric Mode:
+There is an additional way to represent permissions using numbers which are called Numeric Mode.
+
+Let’s look at the Numeric file permission chart below.
+
+  0
+
+---
+
+No permission
+
+1
+
+--x
+
+Only Execute permission
+
+2
+
+-w-
+
+Only write permission
+
+3
+
+-wx
+
+Write and Execute permission
+
+4
+
+r--
+
+Only read permission
+
+5
+
+r-x
+
+Read and Execute permission
+
+6
+
+rw-
+
+Read and Write permission
+
+7
+
+rwx
+
+Read, Write and Execute permission
+
+If I refer this Numeric permission chart and apply it on the same directory mentioned in the above image, the permission will look like below.
+
+rwx
+
+4+2+1
+
+7
+
+r-x
+
+4+0+1
+
+5
+
+r-x
+
+4+0+1
+
+5
+
+
+Hence, the numeric permission of the testdir directory is 755. 
+
+Understanding UMASK:
+Let’s create a new file and new directory by executing the below command.
+
+$ touch testfile
+$ mkdir testdir
+Let’s view the permissions of testfile and testdir by executing ls -l command.
+
+$ ls -l
+
+Output:
+drwxr-xr-x  2 niteshb users    4096 Mar 21 22:43 testdir
+-rw-r--r--  1 niteshb users       0 Mar 21 22:43 testfile
+Did you notice the permissions? They are different, right? This is because of the default umask value which is set in the Linux machine. 
+
+By default, on the Linux machine, the default creation permission for a file is 666 which gives read and write permission to the owner, group, and others and 777 for a directory which means read, write and execute permission to the owner, group and others. 
+
+As we know directories cannot be executable. Then why directory need an execute permission? Well, the execute permission to the directory is to allow accessing contents under the directory. If using chmod command we change the permission of directory to 666 and try going into the directory by cd command, you will get permission denied error. 
+
+On most of the Linux distributions, the default system-wide value is set in pam_umask.so or in /etc/profile file. By adding the value in ~/.bashrc file in the user’s home directory, we can make a umask value specific for the user. 
+
+To check umask value, execute umask command.
+
+$umask
+Output:
+
+0022
+We can ignore the very first 0 from above four numbers for now. It is a part of advanced permission in Linux. Which can prevent modifying file even if you have write permission or we can prevent to delete a file even if you are the root user. In this blog, we are only going to concentrate on the other three numbers. 
+
+To change the current session umask value, execute the below command followed by the desired value. 
+
+$umask 0044
+How files and directories get their permissions:
+The value associated with umask is NOT the permission you get for your files and directories. 
+
+There is a very simple calculation. As we mentioned above that the default value for a file is 666 and for a directory, it’s 777. To calculate permission bits for new files or directories, subtract the umask value from the default value. 
+
+For example, let’s calculate how a new file or directory permission will affect because of umask.
+
+Files: 666 - 022 = 644. According to the permission, the owner can read and execute the file. Groups and others can read the file. 
+Directory: 777 - 022 = 755. This means the owner will have all read, write permission and cd to the directory. Group and others can read and list the contents of the directory and cd to the directory. 
+You can also view the umask value in numeric form by executing below command.
+
+$umask
+Output:
+
+u=rwx,g=rx,o=rx
+Unlike the numeric notation, the symbolic notation value contains the permission bits that will be set on the newly created files and directories.
+
+Setting the mask value:
+The file creation mask can be set using octal or symbolic notation. To make the changes permanent set the new umask value in a global configuration file like /etc/profile file which will affect all users or in a user’s shell configuration files such as ~/.profile, ~/.bashrc or ~/.zshrc which will affect only the user. The user files have precedence over the global files.
+
+Before making changes to the umask value make sure the new value doesn’t pose a potential security risk. Values less restrictive than 022 should be used with great caution. For example umask 000 means that anyone will have read, write, and execute permission for all newly created files.
+
+Let’s say we want to set more restrictive permissions for the newly created files and directories so others will not be able to cd to the directories and read files. The permissions we want are 750 for directories and 640 for files.
+
+To calculate the umask value simply subtract the desired permissions from the default one:
+
+Umask value: 777-750 = 027
+
+The desired umask value represented in numeric notation is 027.
+
+To permanently set the new value system-wide open the /etc/profile file with your text editor and change or add the following line at the beginning of the file:
+
+umask 0027
+For changes to take effect run the following source command or log out and log in:
+
+$source /etc/profile
+To verify the new settings we will create one new file and directory using the below commands.
+
+$mkdir newtestdir
+$touch newtestfile
+If you check the permissions using the ls command you will notice that the new file has 640 and the new directory 750 permissions, as we wanted:
+
+drwxr-xr--  2 niteshb  users    4096 Mar 21 22:43 newtestdir
+-rw-r-----  1 niteshb  users       0 Mar 21 22:43 newtestfile
+Another way to set the file creation mask is by using the symbolic notation. For example umask u=rwx,g=rx,o= is same as umask 027.
+
+Conclusion:
+In this guide, we have explained the Linux permissions and how to use the umask command to set the permissions bits for newly created files or directories.
+
+For more information type below command in your terminal.
+
+$man umask
+
