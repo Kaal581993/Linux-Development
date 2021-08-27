@@ -1,0 +1,98 @@
+The vi/vim editor
+
+vi [file]
+
+or 
+
+vim [file] to start editing a file
+
+view [file] to only read a file
+
+
+Vim Command Mode and Navigation
+
+k           up one line
+j           Down one line
+h           Left one character
+l           Right one character
+w           Right one word
+b           Left one word
+^           Go to the beginning of the file
+$           Go to the end of the file
+
+
+Vi Insert Mode:
+
+i         Insert at the cursor position
+I         Insert at the beginning of the file
+a         Append after the cursor position
+A         Append at the End of the line
+
+
+Vi Line Mode:
+
+:w        Writes(saves) the file
+:w!       forces the file to be saved
+:q        Quit the file
+:q!       Quit without savin any changes
+:wq!      Wrtie and Quit
+:x        Wrtie and Quit
+:n        To position cursor at the value of the line n, eg :23
+:$        Position cursor at the end of the Line
+
+:set nu   Turn on line numbering
+:set nonu Turn off line numbering
+
+:help [subcommand] Get help
+
+Manipulate Vi Modes:
+
+Command Modes     Esc
+Insert            ilaA
+line              :
+
+Vi Repeating Commands
+
+- Repeat a command by preceding it with a number.
+      => 5k = Move up a line 5 times
+      => 80i <Text>  <ESC> = Insert <text> 80 times
+      => 80i_<ESC> = Inset80"_" characters
+
+Vi Deleting the text:
+x         Delete a character   
+dw        Delete a word
+dd        delete a Line
+D         Delete from current position
+
+Vi Deleting the text:
+
+r         Replace the current Text
+cw        Change the current word
+cc        Change the current Line
+c$        Change the text from current position 
+C         Change the text from current position
+~         Reverse the case of a character
+
+Vi Copying and Pasting
+
+yy            Yank(copy) the current Line
+y<position>   Yank the position
+
+p             Paste the most recent deleted or yanked Text
+
+
+Vi Undo/Redo
+
+u           Undo
+Ctrl-R      Redo
+
+Vi Searching
+/<pattern>  Start a forward Search
+?<pattern>  Start a reverse
+
+vimtutor is command for vim tutorial manual
+
+
+
+
+  
