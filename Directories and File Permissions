@@ -326,3 +326,22 @@ For more information type below command in your terminal.
 
 $man umask
 
+
+Display of the contents of a file:
+
+cat [File_name]           Display the contents of a File
+more [File_name]          Browse through the text File
+less [File_name]          More features than More
+head [File_name]          Output the beginning(or top)portion of File
+tail [File_name]          output the ending or the bottom portion of file
+
+Using Heads and Tails
+
+- Displays only 10 lines by default
+- Changes this behaviour with -n
+  => n = munber of lines
+  => tail -15 file.txt
+  => Displays data as it is been written to the file in real time
+  using following command:
+
+  tail -f file   Follow the file
