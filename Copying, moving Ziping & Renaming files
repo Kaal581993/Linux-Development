@@ -1,0 +1,73 @@
+Copying, Moving, renaming, Compress, archiving and deleting files.
+
+
+Romvinf Files:
+
+rm files                Remove file
+rm -r dir               Removes directory and it's contents recursively
+rm -f file              Force removal and never prompt for confirmation
+
+Copying Files:
+
+cp source_file destination_file             this copies source files to destination_file
+
+cp src_file1 [src-fileN...] dest_dir        Copy source_files to destination_directory
+
+cp -i                                       Run in interactive mode
+
+cp -r                                       source_directory destination 
+                                            copy src directory to the destination_file
+
+
+Moving and rename files:
+
+mv                                          Move or rename the Files
+mv source destination                                                                              
+mv -i source destination
+
+
+Sorting Data
+
+sort file                                    Sort the text in file
+
+
+Sort options:
+
+-k F                                        Sort by key. F is the feild number
+
+-r                                          Sort in reverse source_directory
+
+-u                                          Sort unique
+
+Creating a collection of files:
+
+tar [-] c|x|t f tarfile [pattern]           Create, extract or list contents of a tar file
+                                            archive using pattern, if supplied
+
+
+Tar Options:
+
+c                                           Create a tar archive
+x                                           Extracts files from the archive
+t                                           Display the table of the contents(list)
+v                                           Be verbose
+z                                           Use compression
+f file                                      Use this file
+
+
+Compressing files to save space:
+
+gzip                                       Compress Files
+gunzip                                     uncompress Files
+gzcat                                      Concatenates compressed Files
+zcat                                       Concatenates Compressed Files
+
+Disk Usage:
+
+du                                        estimates files Usage
+du -k                                     Display sizes in Kilobytes
+du -h                                     Display sizes in human readable format
+                                          
+
+
+  
