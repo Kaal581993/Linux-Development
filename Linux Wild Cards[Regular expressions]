@@ -1,0 +1,35 @@
+Linux Wild Cards:
+
+- It is a character or string used for pattern matching
+- Globbing expands the wildcard pattern into a list of files and/ or directories (path)
+- Wildcards can be used with most commmands:
+  => ls
+  => rm
+  => cp
+
+  * - matches zero or more characters
+  Eg: *.txt, a*, a*.text
+
+  ? - matches exactly one character
+  Eg: ?.txt, a?, a?.txt
+
+[] - A character class
+    => Matches any of the characters in the bracket. Matches exactly one character
+    => Eg: [aeiou], ca[nt]
+      -can, cat, candy, catch etc.
+[!] - The not class used to avoid the charcter class, in short oppsite of the above
+
+Using hyphen can be used to create a range, for eg: [A-Z, a-z]* or [3-10]* 
+
+we can also use the predefined named Character classes as shown below:
+
+[[:alpha:]]
+[[:alnum:]]
+[[:digit:]]
+[[:lower:]]
+[[:space:]]
+[[:upper:]]
+
+- \ - secape character, it can be used to match a wildcarxd character 
+      - Match all files that end with a question mark: *\?
+      
